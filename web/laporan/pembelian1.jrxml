@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="750" pageHeight="842" columnWidth="710" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="743b49bc-262d-4940-a6c8-de53af1f828f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="29"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="5ac26fe5-90f7-4670-871c-051983e4370e"/>
+	<parameter name="bln" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="thn" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     date_format(pembelian.`tgl`,'%M') AS bln,
+     barang.`nama_barang` AS barang_nama_barang,
+     pembelian.`kode_pembelian` AS pembelian_kode_pembelian,
+     pembelian.`tgl` AS pembelian_tgl,
+     pembelian.`satuan` AS pembelian_satuan,
+     pembelian.`harga_beli` AS pembelian_harga_beli,
+     pembelian.`qty` AS pembelian_qty,
+     pembelian.`subtotal` AS pembelian_subtotal,
+     pembelian.`keterangan` AS pembelian_keterangan,
+     supplier.`nama_supplier` AS supplier_nama_supplier
+FROM
+     `pembelian` pembelian INNER JOIN `supplier` supplier ON pembelian.`kode_supplier` = supplier.`kode_supplier`
+     INNER JOIN `barang` barang ON pembelian.`kode_barang` = barang.`kode_barang`
+WHERE
+     month(tgl) = $P{bln}
+     and year(tgl) = $P{thn}]]>
+	</queryString>
+	<field name="bln" class="java.lang.String"/>
+	<field name="barang_nama_barang" class="java.lang.String"/>
+	<field name="pembelian_kode_pembelian" class="java.lang.String"/>
+	<field name="pembelian_tgl" class="java.sql.Date"/>
+	<field name="pembelian_satuan" class="java.lang.String"/>
+	<field name="pembelian_harga_beli" class="java.lang.Integer"/>
+	<field name="pembelian_qty" class="java.lang.Integer"/>
+	<field name="pembelian_subtotal" class="java.lang.Integer"/>
+	<field name="pembelian_keterangan" class="java.lang.String"/>
+	<field name="supplier_nama_supplier" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="204" splitType="Stretch">
+			<image>
+				<reportElement x="17" y="15" width="681" height="149" uuid="8fab3b57-4dd3-4d9c-ab01-6ea3af3c7488"/>
+				<imageExpression><![CDATA["D:\\warung_pasta\\web\\gambar\\warpas.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="251" y="172" width="323" height="32" uuid="138c38d7-d15a-4ae6-9c42-7f0bc9772b04"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN PEMBELIAN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="66">
+			<textField>
+				<reportElement x="60" y="5" width="100" height="20" uuid="d34de11f-8e1d-43e5-bd8f-e50df7be2afc"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bln}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="60" y="24" width="100" height="20" uuid="ec802f2c-ca07-4000-905b-791fe8699ba8"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{thn}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="0" y="4" width="79" height="18" forecolor="#000000" uuid="bd18ba1d-9214-4611-addc-0beef9f2c891"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bulan :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="0" y="24" width="79" height="18" forecolor="#000000" uuid="ecf3dbae-a5f1-4161-8fc1-fdeead3f571c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tahun :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="53" width="100" height="10" uuid="21b3af24-edbc-432c-bc71-126496a42aff"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Cetak :]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="54" y="53" width="177" height="10" uuid="26ae588a-2d95-4ac5-948d-001ddfbd04be"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="64" width="147" height="1" uuid="bd99b801-188b-4c81-bdee-8dc8a46c960f"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="1" width="123" height="18" forecolor="#000000" uuid="65e07ffa-c196-45ec-ad79-fd4e98fb389a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Pembelian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="126" y="0" width="76" height="18" forecolor="#000000" uuid="28e8c830-2af1-4fa6-878d-fb86407e1c52"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="195" y="0" width="125" height="18" forecolor="#000000" uuid="7e9016d6-0965-4a5c-a5ba-8563b287f634"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Bahan Baku]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="330" y="0" width="91" height="18" forecolor="#000000" uuid="422ef2df-60fa-4c42-83b4-6cb91ef36ce9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Supplier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="431" y="1" width="61" height="18" forecolor="#000000" uuid="f7b12eeb-116a-44e9-83a9-92fdccd63a8d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Satuan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="485" y="0" width="79" height="18" forecolor="#000000" uuid="cb44a2e7-29dc-4b99-9b35-ac78dbf77c07"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Harga Beli]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="571" y="0" width="61" height="18" forecolor="#000000" uuid="c2f95fdb-b856-4e1b-a850-79ad7a864bf3"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="640" y="0" width="61" height="18" forecolor="#000000" uuid="1e508cee-4385-4c27-980c-79808c85d908"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="126" y="0" width="75" height="20" uuid="1d939f60-84b0-483c-999e-f91b76ba5522"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_tgl}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="79" height="20" uuid="de578c45-5b46-4432-bb11-b5a32cae6014"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_kode_pembelian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="485" y="0" width="79" height="20" uuid="fb9d9ad0-3a99-47b0-8d6e-ff31b2d64e67"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_harga_beli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="571" y="0" width="61" height="20" uuid="472e8e53-1647-42d4-abc9-24d785b8d6b0"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="640" y="0" width="61" height="20" uuid="f93e3b56-8382-4709-8405-9f302747666c"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_subtotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="3" width="100" height="20" uuid="7804d6a0-3f12-4b12-b65e-26dab0f1a909"/>
+				<textFieldExpression><![CDATA[$F{supplier_nama_supplier}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="0" width="111" height="20" uuid="e4faff74-3983-47df-af55-6c36b16bf2f1"/>
+				<textFieldExpression><![CDATA[$F{barang_nama_barang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="3" width="61" height="20" uuid="46caef25-1e1d-4304-a850-923ed95bbadc"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_satuan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,130 @@
+
+body {
+    margin: 0 auto;
+    background-image: url('gambar/Tembok.jpeg');
+    background-size: 20%; 
+    background-repeat: repeat;
+}
+/*Membuat background menjadi transparan*/
+.transbox{
+    height:100%; /*mengatur posisi pada bagian template*/
+    width:100%; /*mengatur posisi pada bagian template*/
+    background: rgba (0,0,0,0.1); /*membuat background menjadi polos*/
+}
+/*Mengatur ukuran website*/
+.wrap{
+    width: 900px; /*mengatur lebar pada bagian template*/
+    margin: auto;
+    box-shadow: 10px 10px 10px white; /*membuat bayangan pada kotak samping template*/
+    border-style: solid;
+    border-color: navy;
+}
+/*mengatur bagian header (bagian paling atas)*/
+.header{
+    width: 900px;
+    height:150px;
+    background-color: navy;
+}
+/*mengatur bagian menu*/
+.menu{
+    background-color: navy;
+    overflow: hidden;
+    width: 900px;
+    border-bottom-style: solid;
+    border-color: navy;
+    border-width: thin;
+}
+/*mengatur bagian link saat cursor mengarah ke menu*/
+.menu a:hover{
+    background-color: #ffcc33;
+    color: white;
+}
+/*mengatur ukuran box bagian isi*/
+.isi{
+    height: 430px;
+    background-color: white;
+    padding: 10px;
+}
+/*mengatur ukuran bagian sidebar*/
+.sidebar{
+    width: 30%;
+    height: 90%;
+    float: right;
+    background-color: white;
+    box-shadow: 8px 5px 5px navy;
+    border: solid;
+    position: relative;
+    margin-right: 5px;
+    margin-left: 0px;
+    border-color: navy;
+    font-size: 10px;
+}
+/*mengatur judul bagian sidebar (judul pada bagian menu)*/
+.sidebar div{
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-indent: 30px;
+    line-height: 30px;
+    background-color: navy;
+    font-family: roboto;
+    font-size: 25px;
+    color: white;
+}   
+/*mengatur ukuran bagian nav (bagian menu)*/
+.sidebar-nav{
+    top: 0;
+    width: 80%;
+    margin: 5;
+    list-style: square;
+    position: relative;
+}
+.sidebar-nav img{
+    height: 100px;
+    width: 100px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+/*mengatur ukuran li bagian nav (bagian isi)*/
+.sidebar-nav li{
+    text-indent: 5px; /*mengatur jarak pada bagian setbar*/
+    line-height: 55px; /*mengatur jarak bawah pada bagian setbar*/
+    border-bottom-style: solid; /*membuat garis bawah pada bagian setbar*/
+    border-color: navy; /*mengatur warna pada garis bawah pada bagian setbar*/
+    border-width: thick; /*mengatur ketebalan garis bawah pada bagian setbar*/
+    position: relative;
+}
+/*mengatur ukuran jenis huruf pada bagian SETBAR (bagian isi)*/
+.sidebar-nav li a{
+    display: block; /*menampilkan huruf pada bagian setbar*/ 
+    text-decoration: none; /*mengatur style pada tulisan bagian setbar*/
+    color: navy; /*Mengatur warna pada bagian Setbar*/
+    font-family: roboto; /*mengatur jenis font pada bagian setbar*/
+    font-size: 25px; /*mengatur ukuran font pada bagian setbar*/
+}
+/*mengatur warna link saat cursor mengarah ke link*/
+.sidebar-nav li a:hover{
+    text-decoration: none;
+    color: white;
+    background-color: #c40b00;
+}
+#footer {
+    width: 900px;
+    height: 50px;
+    margin-top: 80px;
+    padding: 10px 0 25px 0;
+    background: #000066;
+    color: #ffffff;
+}
+#footer p {
+    line-height: normal;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+}
+#id{
+    margin: 0px;
+    font-size: 90px;
+}

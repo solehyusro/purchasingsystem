@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0b876a96-32d9-4598-9454-34226695bbff">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from pembelian]]>
+	</queryString>
+	<field name="kode_pembelian" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kode_barang" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kode_supplier" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="satuan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="qty" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="subtotal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="kode_supplier_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{kode_supplier}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="148" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="582" height="118" uuid="4a0cc4ad-f971-45ab-b3c5-61c2d3275053"/>
+				<imageExpression><![CDATA["D:\\warung_pasta\\web\\gambar\\warpas.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="5" y="124" width="196" height="20" uuid="a020724a-eb57-4dfb-8e49-6cb964d3e663"/>
+				<textElement textAlignment="Justified">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAPORAN PEMBELIAN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="4" width="118" height="20" uuid="6a46bb3a-2cea-4730-8fdc-aa5fab44522e"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Pembelian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="403" y="4" width="47" height="20" uuid="a9be3afa-e8a3-4253-a87e-cfc1018a0f23"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Satuan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="308" y="4" width="84" height="20" uuid="e1aac07b-6705-4d59-b25c-ab433576c6c2"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Supplier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="4" width="49" height="20" uuid="a4c3ce58-a1d4-4afc-b4e5-5f1e7e2ac963"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="499" y="4" width="83" height="20" uuid="538018bf-06c4-49ce-a406-a8947c711979"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sub Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="4" width="69" height="20" uuid="a1b3a93d-16bd-4093-8f4e-8232be76e7ce"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="4" width="111" height="20" uuid="9dce16b0-51d8-4a02-81e3-298c0ba8ca78"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Barang]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="118" height="20" uuid="464f7c29-a9b5-44b7-a30e-ba5dbefb9bb7"/>
+				<textFieldExpression><![CDATA[$F{kode_pembelian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="118" y="0" width="69" height="20" uuid="237359a3-b9d3-4ed5-b6b9-2b35fb878d75"/>
+				<textFieldExpression><![CDATA[$F{tgl}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="197" y="0" width="111" height="20" uuid="81f15a04-04b7-4333-b930-c3a760084c4f"/>
+				<textElement markup="none"/>
+				<text><![CDATA[$F{kode_barang}]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="308" y="0" width="84" height="20" uuid="f4cf0df7-87ec-40aa-8454-898df796fddc"/>
+				<textFieldExpression><![CDATA[$F{kode_supplier}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="0" width="47" height="20" uuid="b7b8f0a9-3c9f-4fab-823c-5293df7d1dd2"/>
+				<textFieldExpression><![CDATA[$F{satuan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="49" height="20" uuid="4b8c5082-85aa-4f28-805b-37dfc3f1df76"/>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="499" y="0" width="83" height="20" uuid="8f8bf458-8228-4a2e-91a7-f05c739bd2e0"/>
+				<textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="43" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
